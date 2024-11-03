@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='order.css') }}">
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    <h1>Egg-Cellent Menu</h1>
+    <div class="container">
+        <div class="orders">
+            {% for item in menu_items %}
+            <div class="order-item">
+                <img src="{{ item[3] }}" alt="Food Picture" class="food-pic"> <!-- Food Picture -->
+                <div class="order-details">
+                    <h3>{{ item[0] }}</h3> <!-- Food Name -->
+                    <p>{{ item[1] }}</p> <!-- Description -->
+                    <p class="price">Price: ${{ item[2] }}</p> <!-- Price -->
+                    <a href="{{ url_for('payout.show_payout') }}" class="btn">Order</a> <!-- Order Button -->
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+
+</html>

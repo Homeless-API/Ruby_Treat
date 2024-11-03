@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='control.css') }}">
+</head>
+
+<body>
+    {% include 'nav.html' %}
+    <h1>Add New Food Item</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="food_name">Food Name:</label><br>
+            <input type="text" id="food_name" name="food_name">
+        </div>
+
+        <div class="form-group">
+            <label for="description">Description:</label><br>
+            <textarea id="description" name="description"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="price">Price:</label><br>
+            <input type="text" id="price" name="price">
+        </div>
+
+        <div class="form-group">
+            <label for="food_pic">Choose a picture:</label><br>
+            <input type="file" id="food_pic" name="food_pic">
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+
+</html>

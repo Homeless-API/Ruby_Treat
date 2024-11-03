@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='login.css')}}">
+</head>
+
+<body id="bg-image">
+    <fieldset class="login">
+        <legend>Login Form</legend>
+
+        {% if error %}
+        <div class="error-message">
+            <p>{{ error.invalid_err }}</p>
+        </div>
+        {% elif error %}
+        <p>{{ error.err }}</p>
+        {% else %}
+        <!--no error message-->
+        {% endif %}
+
+        <form action='/login' method="POST" class="login_form">
+            <div>
+                Username:
+                <input type="text" name="username" placeholder="Username" required />
+            </div>
+            <br />
+            <div>
+                Password:
+                <input type="password" name="password" placeholder="Password" required />
+            </div>
+            <br />
+            <button type="submit" class="login_btn">Submit</button>
+        </form>
+    </fieldset>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <!-- Fix the typo in the 'rel' attribute -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='signup.css') }}">
+</head>
+
+<body id="bg-image">
+    <fieldset id="signup">
+        <legend>SIGN UP</legend>
+        {% if error.validation_error %}
+        <p id="error">{{ error.validation_error }}</p>
+        {% elif error.username_error %}
+        <p id="error">{{ error.username_error }}</p>
+        {% elif error.db_error %}
+        <p id="error">{{ error.db_error }}</p>
+        {% elif error.system_error %}
+        <p id="error">{{ error.system_error }}</p>
+        {% else %}
+        <!-- No error message -->
+        {% endif %}
+
+        <form action="/sign-up" method="POST" id="signup-form">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" name="username" class="form_label" required>
+            </div>
+            <br>
+            <div>
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form_label" required>
+            </div>
+            <br>
+            <div>
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form_label" required>
+            </div>
+            <br>
+            <div class="box">
+                <label for="dob">Date of Birth</label>
+                <input type="date" name="dob" class="form_label" required>
+            </div>
+            <br>
+            <div>
+                <label for="gender">Gender</label>
+                <select name="gender" class="form_label" required>
+                    <option value="" selected disabled hidden>Choose your transformer</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Child pre...">Child pre...</option>
+                </select>
+            </div>
+            <br>
+            <div>
+                <label for="user_type">USER type</label>
+                <select name="user_type" class="form_label" required>
+                    <option value="" selected disabled hidden>user type</option>
+                    <option value="Customer">Customer</option>
+                    <option value="Admin">Admin</option>
+                </select>
+
+            </div>
+            <br>
+            <button type="submit" class="signup_btn">Submit</button>
+        </form>
+    </fieldset>
+</body>
+
+</html>

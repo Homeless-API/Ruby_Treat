@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #FFF8E1;
+    /* Soft cream background */
+    padding: 20px;
+}
+
+h1 {
+    color: #D8A106;
+    /* Warm golden-yellow, like egg yolk */
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #8C6C03;
+    /* Earthy brown for labels */
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #E6D7A3;
+    /* Light beige border */
+    border-radius: 10px;
+    /* Softer, rounded edges */
+    background-color: #FFFDF5;
+    /* Light off-white background for input */
+}
+
+input[type="file"] {
+    padding: 10px;
+    background-color: #FFFDF5;
+    border: 1px solid #E6D7A3;
+    border-radius: 10px;
+}
+
+input[type="submit"] {
+    background-color: #F4C430;
+    /* Golden yellow, like yolk */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #E0AC1C;
+    /* Darker golden yellow on hover */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: #F4C430;
+    /* Highlighted with yolk color when focused */
+    box-shadow: 0 0 5px rgba(244, 196, 48, 0.5);
+}

@@ -1,0 +1,142 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FFF8E1 40%, #FFFBED);
+    color: #4D3B00;
+    padding: 20px;
+}
+
+h1 {
+    color: #D8A106;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.orders {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.order-item {
+    background: linear-gradient(145deg, #FFFDF5, #F5EEDC);
+    border: 1px solid #E6D7A3;
+    border-radius: 25px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.7);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+}
+
+.order-item::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle at 10px 10px, #FFF8E1, transparent 80%);
+    border-radius: 50%;
+    opacity: 0.8;
+}
+
+.order-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.food-pic {
+    max-width: 100%;
+    height: auto;
+    border-radius: 25px 25px 0 0;
+    transition: transform 0.3s ease;
+}
+
+.food-pic:hover {
+    transform: scale(1.1);
+}
+
+.order-details {
+    padding: 20px;
+    background: #FFFBED;
+    border-radius: 0 0 25px 25px;
+    text-align: center;
+}
+
+.order-details h3 {
+    color: #D8A106;
+    margin-bottom: 10px;
+    font-size: 1.6rem;
+}
+
+.order-details p {
+    color: #8C6C03;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.order-details .price {
+    color: #4D3B00;
+    font-weight: bold;
+    font-size: 1.3rem;
+    margin-top: auto;
+}
+
+.btn {
+    background-color: #F4C430;
+    color: #FFF;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+    background-color: #E0AC1C;
+    transform: translateY(-3px);
+}
+
+.btn:active {
+    background-color: #C99416;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+input[type="text"],
+textarea {
+    background: #FFFDF5;
+    border: 1px solid #E6D7A3;
+    padding: 10px;
+    width: 100%;
+    border-radius: 15px;
+    font-size: 1rem;
+    color: #4D3B00;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: #F4C430;
+    box-shadow: 0 0 8px rgba(244, 196, 48, 0.3);
+    outline: none;
+}

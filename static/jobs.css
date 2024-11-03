@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background-color: #3e64ff;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.job {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+    padding: 30px;
+    width: 300px;
+    text-align: left;
+}
+
+.job h2 {
+    color: #3e64ff;
+    margin-bottom: 10px;
+}
+
+.job p {
+    color: #666666;
+}
+
+button {
+    background-color: #3e64ff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #2143d3;
+    transition: background-color 0.3s ease;
+}
+
+footer {
+    background-color: #3e64ff;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
