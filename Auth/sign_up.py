@@ -11,7 +11,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("FLASK_SECRET_KEY", "default_secret_key")  # Use environment secret key
 
 signup_bp = Blueprint("sign_up", __name__)
 
