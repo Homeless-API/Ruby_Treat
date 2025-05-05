@@ -4,9 +4,14 @@ from Data.savedata import connect_to_postgres
 import string
 import random
 import uuid
+import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 app = Flask(__name__)
-app.secret_key = 'your_secret_key'
+app.secret_key = os.environ.get("FLASK_SECRET_KEY", "default_secret_key")  # Use environment secret key
 
 signup_bp = Blueprint("sign_up", __name__)
 
@@ -39,8 +44,8 @@ def sign_up():
             if errors:
                 error = {'validation_error': errors}
             else:
-                # Connect to the PostgreSQL database
-                db_connection, cursor = connect_to_postgres('Ruby Treat', 'users')
+                # Connect to the PostgreSQL database using DATABASE_URL
+                db_connection, cursor = connect_to_postgres()
 
                 if db_connection and cursor:
                     # Check if the username already exists
@@ -52,7 +57,7 @@ def sign_up():
                         error = {'username_error': 'Username already exists. Choose another username.'}
                     else:
                         # Insert user information into the specified table
-                        cursor.execute("""
+                        cursor.execute(""" 
                             INSERT INTO users (username, password, email, dob, gender, user_type, user_id)
                             VALUES (%s, %s, %s, %s, %s, %s, %s)
                         """, (username, password, email, dob, gender, user_type, user_id))
@@ -71,7 +76,7 @@ def sign_up():
     except ValueError as ve:
         error = {'input_error': str(ve)}
     except Exception as ex:
-        print('error', ex)
+        print('Error:', ex)
         error = {'system_error': 'System code failure. Try again.'}
 
     return render_template('signup.html', error=error)
