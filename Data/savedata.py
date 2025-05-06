@@ -1,22 +1,19 @@
 import psycopg2
 import os
+import uuid
 import urllib.parse as urlparse
 
-def connect_to_postgres():
+def connect_to_postgres(db_name, table_name):
     try:
-        # Get DATABASE_URL from environment variables
         db_url = os.environ.get("DATABASE_URL")
-
         if db_url is None:
             raise ValueError("DATABASE_URL not set in environment variables!")
 
-        # Parse the database URL
         urlparse.uses_netloc.append("postgres")
         parsed_url = urlparse.urlparse(db_url)
 
-        # Connect to the database using the parsed URL
         connection = psycopg2.connect(
-            database=parsed_url.path[1:],  # database name
+            database=db_name,
             user=parsed_url.username,
             password=parsed_url.password,
             host=parsed_url.hostname,
@@ -25,6 +22,34 @@ def connect_to_postgres():
 
         cursor = connection.cursor()
 
+        # Create table if not exists
+        if table_name == "users":
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS users (
+                    id SERIAL PRIMARY KEY,
+                    user_id UUID UNIQUE NOT NULL,
+                    username TEXT NOT NULL UNIQUE,
+                    password TEXT NOT NULL,
+                    email TEXT NOT NULL,
+                    dob DATE,
+                    gender TEXT,
+                    user_type TEXT
+                );
+            """)
+        elif table_name == "menu":
+            cursor.execute("""
+                CREATE TABLE IF NOT EXISTS menu (
+                    id SERIAL PRIMARY KEY,
+                    food_name TEXT NOT NULL,
+                    description TEXT,
+                    price NUMERIC(10, 2),
+                    food_pic TEXT
+                );
+            """)
+        else:
+            raise ValueError(f"Unsupported table: {table_name}")
+
+        connection.commit()
         return connection, cursor
 
     except ValueError as err:
