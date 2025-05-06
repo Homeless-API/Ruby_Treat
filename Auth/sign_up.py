@@ -31,7 +31,7 @@ def sign_up():
             dob = request.form.get('dob')
             gender = request.form.get('gender')
             user_type = request.form.get('user_type')
-            user_id = str(uuid.uuid4())  # Generate a new UUID for each signup
+            user_id = generate_userid()
 
             # Sanitize inputs
             username = username.strip()
@@ -44,7 +44,8 @@ def sign_up():
                 error = {'validation_error': errors}
             else:
                 # Connect to the PostgreSQL database using DATABASE_URL
-                db_connection, cursor = connect_to_postgres()
+                db_connection, cursor = connect_to_postgres("rubytreatdb", "users")
+
 
                 if db_connection and cursor:
                     # Check if the username already exists
