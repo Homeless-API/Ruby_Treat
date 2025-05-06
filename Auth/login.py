@@ -14,7 +14,8 @@ def login():
             password = request.form.get('password')
 
             # Connect to the PostgreSQL database
-            db_connection, cursor = connect_to_postgres()
+            db_connection, cursor = connect_to_postgres("rubytreatdb", "users")
+
 
             if db_connection and cursor:
                 # Check if the provided username exists in the database
