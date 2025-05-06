@@ -31,7 +31,8 @@ def sign_up():
             dob = request.form.get('dob')
             gender = request.form.get('gender')
             user_type = request.form.get('user_type')
-            user_id = generate_userid()
+            user_id = str(uuid.uuid4())  # Generates a valid UUID string
+
 
             # Sanitize inputs
             username = username.strip()
